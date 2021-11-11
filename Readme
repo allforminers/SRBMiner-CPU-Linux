@@ -2,10 +2,13 @@ SRBMiner-MULTI CPU & AMD GPU Miner
 -----------------------------------------
 Cryptocurrency miner
 
-start mining 
+sudo git clone https://github.com/allforminers/SRBMiner-CPU-Linux.git
+
+cd SRBMiner-CPU-Linux
 
 bash start-mining-yespower.sh
 
+start mining 
 
 ./SRBMiner-MULTI --disable-gpu --algorithm yespower --pool 162.55.:6234 --wallet Uw9tHbyUsK.vul --password c=COIN 
 pause
