@@ -2,6 +2,11 @@ SRBMiner-MULTI CPU & AMD GPU Miner
 -----------------------------------------
 Cryptocurrency miner
 
+start mining 
+
+bash start-mining-yespower.sh
+
+
 ./SRBMiner-MULTI --disable-gpu --algorithm yespower --pool 162.55.:6234 --wallet Uw9tHbyUsK.vul --password c=COIN 
 pause
 
