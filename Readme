@@ -4,6 +4,8 @@ Cryptocurrency miner
 
 sudo apt-get install libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler libqrencode-dev unzip software-properties-common npm git screen -y
 
+screen
+
 sudo git clone https://github.com/allforminers/SRBMiner-CPU-Linux.git
 
 chmod -R 777 SRBMiner-CPU-Linux
