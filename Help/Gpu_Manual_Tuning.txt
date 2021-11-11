@@ -1,0 +1,128 @@
+Supported:
+[ VEGA56/64/FE/VII ] & [ RX 550/560, RX 470/480/570/580/590 ] & [ R9 280/290/380/390 ]
+
+Change your memory timings in real time, while mining!
+If you previously started a monitoring software like HWinfo or GPU-Z, tweaks won't get applied, a machine restart is needed!
+
+----------------------------------------------------------------------------------------
+
+To enable manual tuning of memory timings, add parameter : --gpu-manual-tuning
+Optionally you can define a filename for the configuration file ( --gpu-manual-tuning tuning-ethash.txt ) so you can define a configuration for every algorithm.
+
+Miner needs to be run with admin/root privileges, just like with --gpu-tweak-profile and --gpu-boost
+
+
+Supported timings:
+------------------------------------
+
+HBM2 & GDDR5
+------------
+CKSRE
+CKSRX
+CL
+RC
+RP
+REF
+RFC
+FAW
+RAS
+
+
+GDDR5
+------------
+RCDR
+RCDRA
+RCDW
+RCDWA
+RAS2RAS
+TRP
+
+
+HBM2
+------------
+CWL
+MOD
+MRD
+PD
+RCAB
+RCDRD
+RCDWR
+RCPB
+RDWR
+RPAB
+RPPB
+RPRDA
+RPWRA
+RRDL
+RRDS
+RTP
+WR
+WRRD
+WTRL
+WTRS
+
+------------------------------------
+
+When you start SRBMiner first time with the --gpu-manual-tuning parameter added, an empty configuration file will be created ('gpu_manual_tuning.txt')
+
+It might look like this:
+
+{
+    "gpu_devices": [
+        {
+            "id": 0,
+            "enabled": true
+        },
+        {
+            "id": 1,
+            "enabled": true
+        },
+        {
+            "id": 2,
+            "enabled": true
+        }
+    ]
+}
+
+"id"
+GPU ID you get when you run --list-devices (GPU0, GPU1, GPU2)
+
+"enabled"
+true or false, if false then settings for that GPU won't be applied
+
+
+Now it's up to you to add the timings and their values for every GPU to this configuration file.
+If you want to use the default (read from bios) value, put 0 for value.
+Use uppercase letters and exact namings as on the upper list of supported timings (best is to copy/paste from there)
+
+For example :
+
+{
+    "gpu_devices": [
+        {
+            "id": 0,
+            "enabled": true,
+			"REF": 13,
+			"RFC": 155
+        },
+        {
+            "id": 1,
+            "enabled": true,
+			"REF": 14,
+			"RFC": 160
+        },
+        {
+            "id": 2,
+            "enabled": true,
+			"REF": 15,
+			"RFC": 162
+        }
+    ]
+}
+
+When done setting up the configuration file, save it, then go to miner window and press 'r' on your keyboard. This will reload & apply your settings!
+You can do this as many times as you want!
+Find optimal settings for each of your GPU's easily.
+
+Next time when you start SRBMiner and you already have 'gpu_manual_tuning.txt' created & set, miner will auto load it and apply the configuration from it.
+Custom memory timings without the need to modify your GPU's bios!

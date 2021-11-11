@@ -1,0 +1,84 @@
+You can 'dual' mine ZIL with any other algorithm that is supported in SRBMiner-MULTI.
+
+Popular combinations:
+
+ZIL + ETH	= 8GB
+ZIL + ERGO	= 4GB, 8GB
+ZIL + VERT	= 4GB, 8GB
+ZIL + XHV	= 4GB, 8GB
+
+Important:
+ZIL must be defined as A0 (first algorithm)!
+Devfee for ZIL won't be mined, only for the second algorithm.
+
+If you want to 'dual' mine algorithms that cant fit their data together in the GPU VRAM, but can separately, set parameter --gpu-buffer-mode to 1. (Check Cmd_Gpu_Parameters.txt)
+Example : ZIL + XHV on a 4GB gpu. To get the max performance on both algorithms, you need to set --gpu-buffer-mode to 1 on that GPU.
+
+
+
+Examples:
+
+1. ZIL + ETH
+
+Mine ZIL on ezil.me pool, ETH on herominers pool
+-------------------------------------------------
+SRBMiner-MULTI.exe --disable-cpu --a0-is-zil --multi-algorithm-job-mode 3 --algorithm ethash;ethash --pool eu.ezil.me:5555;ethereum.herominers.com:10200 --wallet ethereum-wallet.zilliqa-wallet.zil-worker-name;ethereum-wallet --password x;herominers-worker --gpu-boost 3;0
+	
+	
+Mine ZIL on shardpool.io pool, ETH on herominers pool
+-------------------------------------------------
+SRBMiner-MULTI.exe --disable-cpu --a0-is-zil --multi-algorithm-job-mode 3 --algorithm ethash;ethash --pool eu1-zil.shardpool.io:3333;ethereum.herominers.com:10200 --wallet ethereum-wallet;ethereum-wallet --password zilliqa-wallet@ethereum.herominers.com:10200;herominers-password --worker zil-worker;herominers-worker --gpu-boost 3;0
+	
+	
+	
+2. ZIL + ERGO
+	
+Mine ZIL on ezil.me pool, ERGO on herominers pool
+-------------------------------------------------
+SRBMiner-MULTI.exe --disable-cpu --a0-is-zil --multi-algorithm-job-mode 3 --algorithm ethash;autolykos2 --pool eu.ezil.me:5555;ergo.herominers.com:10250 --wallet ethereum-wallet.zilliqa-wallet.zil-worker-name;ergo-wallet --password x;herominers-worker --gpu-boost 3;0
+	
+	
+Mine ZIL on shardpool.io pool, ERGO on herominers pool
+-------------------------------------------------
+SRBMiner-MULTI.exe --disable-cpu --a0-is-zil --multi-algorithm-job-mode 3 --algorithm ethash;autolykos2 --pool eu1-zil.shardpool.io:3333;ergo.herominers.com:10250 --wallet ethereum-wallet;ergo-wallet --password zilliqa-wallet@ergo.herominers.com:10250;herominers-password --worker zil-worker;herominers-worker --gpu-boost 3;0
+
+
+
+3. ZIL + VERT
+	
+Mine ZIL on ezil.me pool, VERTCOIN on zergpool
+-------------------------------------------------
+SRBMiner-MULTI.exe --disable-cpu --a0-is-zil --multi-algorithm-job-mode 3 --algorithm ethash;verthash --pool eu.ezil.me:5555;verthash.eu.mine.zergpool.com:4534 --wallet ethereum-wallet.zilliqa-wallet.zil-worker-name;vertcoin-wallet --password x;c=VTC,mc=vtc --gpu-boost 3;0
+
+
+
+
+
+
+
+HiveOS:
+
+Mine ZIL on ezil.me pool, ERGO on herominers pool
+-------------------------------------------------
+
+1. Flight Sheets
+
+Coin		: ETH
+Wallet		: add something, we won't be using this wallet anyway
+Pool		: Configure in miner
+Miner		: SRBMiner-MULTI
+
+2. Click 'Setup Miner Config' in Miner tab
+
+Hash algorithm	: Ethash
+Wallet		: ethereum-wallet.zilliqa-wallet.worker-name
+Worker name	: 
+Pool		: eu.ezil.me:5555
+Pass		: 
+Plugin and ..	: --disable-cpu --a0-is-zil --multi-algorithm-job-mode 3 (one per line!)
+
+Hash algorithm	: autolykos2
+Wallet		: ergo-wallet
+Worker name	: 
+Pool		: ergo.herominers.com:10250
+Pass		: worker-name

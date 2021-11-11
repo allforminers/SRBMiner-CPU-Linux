@@ -1,0 +1,57 @@
+Parameters:
+
+--gpu-id value                  (gpu id/s from --list-devices, separate values with ; and !)
+--gpu-intensity value           (gpu intensity, 1-31 or if > 31 it's treated as 'raw-intensity', separate values with ; and !)
+--gpu-auto-intensity value	(0-disabled, 1-light, 2-normal, separate values with ; and !)
+--gpu-extra-config		(additional config for some algorithms, separate values with ; and !)
+--gpu-off-temperature value     (gpu turn off temperature, separate values with ; and !)
+--gpu-adl-type value            (ADL to use (1-3), separate values with !)
+--gpu-boost value		(number from 0-50, separate values with ; and !)
+--gpu-tweak-profile value       (number from 0-10, 0 disables tweaking, separate values with ; and !)
+--gpu-buffer-mode value		(how to handle buffers when using --multi-algorithm-job-mode 3. 0-leave in vram, 1-release on algorithm switch. Default is 0, separate values with ; and !)
+--gpu-ethash-mode value         (1 or 2. Sets number of buffers used for DAG, separate values with ; and !)
+--gpu-cn-mode value		(0 or 1. Default is 0. If you have a weaker GPU try 1. separate values with ; and !)
+--gpu-manual-tuning		(enable manual GPU tuning through configuration file)
+--gpu-progpow-mode value	(1, 2 or 3. Sets how progpow program is created, separate values with ; and !)
+--gpu-progpow-preload value     (number from 0-16. Sets how many periods to pre-create. Def. is 2)
+--gpu-autolykos2-preload value  (number from 0-6, how many datasets to pre-create, depends on free GPU memory. def. is 0,  separate values with ; and !)
+
+Order of the parameters is important! Always set these parameters AFTER --algorithm parameter!
+
+; is used to separate algorithms, ! is used to separate parameters for an algorithm
+On Linux you need to escape the ; character with a backslash! ( \; )
+When setting any of the parameters don't use " or ' around the value!
+
+
+Important:
+
+If algorithm is using 2 threads per GPU (auto chosen or  manually set), there is a chance for memory leaking if intensity value for the second thread is too high.
+This can cause system crash, gpu crash or an unstable system!
+
+
+--gpu-ethash-mode:
+1 - Create 1 buffer for DAG on GPU if driver allows big enough allocation
+2 - Create 2 buffers for DAG on GPU
+
+
+--gpu-buffer-mode:
+0 - Leave buffers in memory for both algorithms when switching. Use if you have enough VRAM on the GPU to store all data from both algorithms.
+1 - Recreate buffers when switching algorithms. This way you can 'dual mine' algorithms that together wouldn't fit in VRAM.
+
+
+--gpu-progpow-mode:
+1 - Use kernel 1. This kernel uses VRAM for DAG only
+2 - Use kernel 2. This kernel uses VRAM for DAG and ~+150-200mb (depends from used intensity)
+3 - Use kernel 3. This kernel uses VRAM for DAG and ~+300-500mb (depends from used intensity)
+
+
+--gpu-autolykos2-preload
+
+Pre-create the dataset/s for the next block/s while mining the current block.
+Additional GPU memory needed.
+Reported hashrate can vary a little bit. Overall it should increase your pool hashrate by a few percent.
+
+There are 2 types of preloading :
+- If you set preload value to 1 it will constantly keep preloading the next block (preferred for 4-8GB gpu's)
+- If you set preload value to > 1 it will preload X number of datasets, and when a block arrives that isn't yet loaded, it will be created so miner can
+start working on it, and then again X number of datasets will get preloaded.
