@@ -16,7 +16,7 @@ bash start-mining-yespower.sh
 
 start mining 
 
-./SRBMiner-MULTI --disable-gpu --algorithm yespower --pool 162.55.:6234 --wallet Uw9tHbyUsK.vul --password c=COIN 
+./SRBMiner-MULTI --disable-gpu --algorithm yespower --pool  --wallet  --password c=COIN 
 pause
 
 Mine up to 4 different algorithms/coins at the same time!
