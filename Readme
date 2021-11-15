@@ -12,7 +12,7 @@ chmod -R 777 SRBMiner-CPU-Linux
 
 cd SRBMiner-CPU-Linux
 
-bash start-mining-yespower.sh
+bash start-mining-yespowerD.sh
 
 start mining 
 
